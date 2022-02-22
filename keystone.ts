@@ -6,7 +6,7 @@ You can find all the config options in our docs here:
 */
 
 import { config } from "@keystone-6/core";
-import { DATABASE_URL } from "./config";
+import { PORT, DATABASE_URL } from "./config";
 
 // Look in the schema file for how we define our lists, and how users interact with them through graphql or the Admin UI
 import { lists } from "./schema";
@@ -36,6 +36,7 @@ export default withAuth(
       // For our starter, we check that someone has session data before letting them see the Admin UI.
       isAccessAllowed: (context) => !!context.session?.data,
     },
+    server: { port: PORT },
     lists,
     session,
   })
