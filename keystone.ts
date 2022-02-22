@@ -1,9 +1,8 @@
 /*
 Welcome to Keystone! This file is what keystone uses to start the app.
-
 It looks at the default export, and expects a Keystone config object.
-
-You can find all the config options in our docs here: https://keystonejs.com/docs/apis/config
+You can find all the config options in our docs here: 
+  https://keystonejs.com/docs/apis/config
 */
 
 import { config } from "@keystone-6/core";
@@ -18,13 +17,8 @@ import { withAuth, session } from "./auth";
 export default withAuth(
   // Using the config function helps typescript guide you to the available options.
   config({
-    // the db sets the database provider - we're using sqlite for the fastest startup experience
-    // db: {
-    //   provider: "sqlite",
-    //   url: "file:./keystone.db",
-    // },
     /*
-
+      Postgres Setup for Railway.
     */
     db: {
       provider: "postgresql",
