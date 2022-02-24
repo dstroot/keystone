@@ -130,7 +130,7 @@ input PostRelateToManyForCreateInput {
 type Post {
   id: ID!
   title: String
-  status: String
+  status: PostStatusType
   content: Post_content_Document
   publishDate: DateTime
   author: User
@@ -141,6 +141,11 @@ type Post {
     skip: Int! = 0
   ): [Tag!]
   tagsCount(where: TagWhereInput! = {}): Int
+}
+
+enum PostStatusType {
+  published
+  draft
 }
 
 type Post_content_Document {
@@ -160,39 +165,17 @@ input PostWhereInput {
   NOT: [PostWhereInput!]
   id: IDFilter
   title: StringFilter
-  status: StringNullableFilter
+  status: PostStatusTypeNullableFilter
   publishDate: DateTimeNullableFilter
   author: UserWhereInput
   tags: TagManyRelationFilter
 }
 
-input StringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  mode: QueryMode
-  not: NestedStringNullableFilter
-}
-
-input NestedStringNullableFilter {
-  equals: String
-  in: [String!]
-  notIn: [String!]
-  lt: String
-  lte: String
-  gt: String
-  gte: String
-  contains: String
-  startsWith: String
-  endsWith: String
-  not: NestedStringNullableFilter
+input PostStatusTypeNullableFilter {
+  equals: PostStatusType
+  in: [PostStatusType!]
+  notIn: [PostStatusType!]
+  not: PostStatusTypeNullableFilter
 }
 
 input DateTimeNullableFilter {
@@ -221,7 +204,7 @@ input PostOrderByInput {
 
 input PostUpdateInput {
   title: String
-  status: String
+  status: PostStatusType
   content: JSON
   publishDate: DateTime
   author: UserRelateToOneForUpdateInput
@@ -248,7 +231,7 @@ input PostUpdateArgs {
 
 input PostCreateInput {
   title: String
-  status: String
+  status: PostStatusType
   content: JSON
   publishDate: DateTime
   author: UserRelateToOneForCreateInput
