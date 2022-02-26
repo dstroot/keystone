@@ -14,6 +14,7 @@ generator client {
 model User {
   id       String @id @default(uuid()) @postgresql.Uuid
   name     String @default("")
+  picture  String @default("")
   email    String @unique @default("")
   password String
   posts    Post[] @relation("Post_author")
@@ -22,6 +23,7 @@ model User {
 model Post {
   id          String          @id @default(uuid()) @postgresql.Uuid
   title       String          @default("")
+  image       String          @default("")
   status      PostStatusType? @default(draft)
   content     Json            @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
   publishDate DateTime?

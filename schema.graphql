@@ -4,6 +4,7 @@
 type User {
   id: ID!
   name: String
+  picture: String
   email: String
   password: PasswordState
   posts(
@@ -30,6 +31,7 @@ input UserWhereInput {
   NOT: [UserWhereInput!]
   id: IDFilter
   name: StringFilter
+  picture: StringFilter
   email: StringFilter
   posts: PostManyRelationFilter
 }
@@ -88,6 +90,7 @@ input PostManyRelationFilter {
 input UserOrderByInput {
   id: OrderDirection
   name: OrderDirection
+  picture: OrderDirection
   email: OrderDirection
 }
 
@@ -98,6 +101,7 @@ enum OrderDirection {
 
 input UserUpdateInput {
   name: String
+  picture: String
   email: String
   password: String
   posts: PostRelateToManyForUpdateInput
@@ -117,6 +121,7 @@ input UserUpdateArgs {
 
 input UserCreateInput {
   name: String
+  picture: String
   email: String
   password: String
   posts: PostRelateToManyForCreateInput
@@ -130,6 +135,7 @@ input PostRelateToManyForCreateInput {
 type Post {
   id: ID!
   title: String
+  image: String
   status: PostStatusType
   content: Post_content_Document
   publishDate: DateTime
@@ -165,6 +171,7 @@ input PostWhereInput {
   NOT: [PostWhereInput!]
   id: IDFilter
   title: StringFilter
+  image: StringFilter
   status: PostStatusTypeNullableFilter
   publishDate: DateTimeNullableFilter
   author: UserWhereInput
@@ -198,12 +205,14 @@ input TagManyRelationFilter {
 input PostOrderByInput {
   id: OrderDirection
   title: OrderDirection
+  image: OrderDirection
   status: OrderDirection
   publishDate: OrderDirection
 }
 
 input PostUpdateInput {
   title: String
+  image: String
   status: PostStatusType
   content: JSON
   publishDate: DateTime
@@ -231,6 +240,7 @@ input PostUpdateArgs {
 
 input PostCreateInput {
   title: String
+  image: String
   status: PostStatusType
   content: JSON
   publishDate: DateTime

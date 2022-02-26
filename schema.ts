@@ -48,6 +48,7 @@ export const lists: Lists = {
     // a name so we can refer to them, and a way to connect users to posts.
     fields: {
       name: text({ validation: { isRequired: true } }),
+      picture: text({ validation: { isRequired: true } }),
       email: text({
         validation: { isRequired: true },
         isIndexed: "unique",
@@ -72,7 +73,8 @@ export const lists: Lists = {
   // so we have all the info we need for displaying posts.
   Post: list({
     fields: {
-      title: text(),
+      title: text({ validation: { isRequired: true } }),
+      image: text({ validation: { isRequired: true } }),
       // Having the status here will make it easy for us to choose whether to display
       // posts on a live site.
       status: select({
