@@ -137,6 +137,7 @@ type Post {
   title: String
   image: String
   status: PostStatusType
+  excerpt: String
   content: Post_content_Document
   publishDate: DateTime
   author: User
@@ -173,6 +174,7 @@ input PostWhereInput {
   title: StringFilter
   image: StringFilter
   status: PostStatusTypeNullableFilter
+  excerpt: StringFilter
   publishDate: DateTimeNullableFilter
   author: UserWhereInput
   tags: TagManyRelationFilter
@@ -207,6 +209,7 @@ input PostOrderByInput {
   title: OrderDirection
   image: OrderDirection
   status: OrderDirection
+  excerpt: OrderDirection
   publishDate: OrderDirection
 }
 
@@ -214,6 +217,7 @@ input PostUpdateInput {
   title: String
   image: String
   status: PostStatusType
+  excerpt: String
   content: JSON
   publishDate: DateTime
   author: UserRelateToOneForUpdateInput
@@ -242,6 +246,7 @@ input PostCreateInput {
   title: String
   image: String
   status: PostStatusType
+  excerpt: String
   content: JSON
   publishDate: DateTime
   author: UserRelateToOneForCreateInput

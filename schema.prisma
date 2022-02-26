@@ -25,6 +25,7 @@ model Post {
   title       String          @default("")
   image       String          @default("")
   status      PostStatusType? @default(draft)
+  excerpt     String          @default("...")
   content     Json            @default("[{\"type\":\"paragraph\",\"children\":[{\"text\":\"\"}]}]")
   publishDate DateTime?
   author      User?           @relation("Post_author", fields: [authorId], references: [id])
